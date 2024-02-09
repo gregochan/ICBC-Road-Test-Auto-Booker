@@ -117,7 +117,7 @@ const ICBCSite = {
             agreementCheckbox.click();
 
             const errorMessage = '.error-message';
-            const buttonExistsInNextPage = '.raised-button';
+            const buttonExistsInNextPage = '.collapsible-action-button';
             let dom;
             do {
                 dom = await $(`${errorMessage}, ${buttonExistsInNextPage}`);
@@ -148,7 +148,7 @@ const ICBCSite = {
         }
     },
 
-    gotoBookingTab: async function () {
+   gotoBookingTab: async function () {
         const rescheduleButton = await $('button', 'Reschedule appointment');
         rescheduleButton.click();
         const yesButton = await $('mat-dialog-container button', 'Yes');
@@ -169,7 +169,7 @@ const ICBCSite = {
 
         const searchButton = await $('button', 'Search');
         searchButton.click()  // select dropdown
-        const departmentTitle = await $('.department-title', LOCATION)
+        const departmentTitle = await $('.first-office-container')
         departmentTitle.click();
     },
 
@@ -208,7 +208,7 @@ const ICBCSite = {
     },
 
     checkDate: async (previousAppointmentList = null) => {
-        const selectedLocationDom = await $('.background-highlight.clicked')
+        const selectedLocationDom = await $('.background-highlight')
         if (!selectedLocationDom) {
             console.warn("Are you sure you already selected a location? There should be a yellowish background once you click on it");
             return
